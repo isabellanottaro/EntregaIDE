@@ -19,11 +19,11 @@ public abstract class Usuario {
 		this.nombre = nombre;
 	}
 
-	public String getEmail(String email) {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail() {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
