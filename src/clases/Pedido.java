@@ -21,7 +21,7 @@ public class Pedido {
 		this.repartidor = null;
 	}
 
-	public double CalcularTotal() {
+	public double calcularTotal() {
 		double total = 0.0;
 		for (LineaPedido linea : lineasPedido) {
 			total = total + linea.getSubtotal();
