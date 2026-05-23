@@ -12,12 +12,15 @@ public class LineaPedido {
 	public double getSubtotal() {
 		return producto.getPrecio()*cantidad;
 	}
+	
 	public Producto getProducto() {
 		return producto;
 	}
+	
 	public int getCantidad() {
 		return cantidad;
 	}
+	
 	public void setCantidad(int cantidad) {
 		this.cantidad=cantidad;
 	}
