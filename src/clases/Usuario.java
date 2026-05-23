@@ -3,9 +3,9 @@ package clases;
 public abstract class Usuario {
 	private String nombre;
 	private String email;
-	private int telefono;
+	private String telefono;
 
-	public Usuario(String nombre, String email, int telefono) {
+	public Usuario(String nombre, String email, String telefono) {
 		this.nombre = nombre;
 		this.email = email;
 		this.telefono = telefono;
@@ -27,11 +27,11 @@ public abstract class Usuario {
 		this.email = email;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 }

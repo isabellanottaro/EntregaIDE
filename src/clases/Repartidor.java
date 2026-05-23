@@ -8,7 +8,7 @@ public class Repartidor extends Usuario {
     private EstadoRepartidor estado;
     private List<Pedido> pedidos;
 
-    public Repartidor(String nombre, String email, int telefono, String zonaReparto) {
+    public Repartidor(String nombre, String email, String telefono, String zonaReparto) {
         super(nombre, email, telefono);
         this.zonaReparto = zonaReparto;
         this.estado = EstadoRepartidor.DISPONIBLE;

@@ -4,8 +4,8 @@ import clases.*;
 
 public class Main {
 	public static void main (String[]args) {
-		Cliente cliente = new Cliente ("Antia Cancelo ", "antiacancelo@gmail.com" , 612345678);
-		Repartidor repartidor = new Repartidor ("Juanito Juan" , "juanitojuan@gmail.com" , 689689689, "Monte Alto" );
+		Cliente cliente = new Cliente ("Antia Cancelo ", "antiacancelo@gmail.com" , "612345678");
+		Repartidor repartidor = new Repartidor ("Juanito Juan" , "juanitojuan@gmail.com" , "689689689", "Monte Alto" );
 		Producto pizza = new Producto ("Pizza Peperoni", 9.90, Categoria.COMIDA);
 		Producto refresco = new Producto ("Nestea" , 1.5, Categoria.BEBIDA);
 		
@@ -27,6 +27,8 @@ public class Main {
 		pedido.entregar();
 		System.out.println("Estado tras entregar: " + pedido.getEstado());
 		System.out.println("Repartidor disponible: " + repartidor.isDisponible());
+		
+		
 		
 		
 		

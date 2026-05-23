@@ -57,40 +57,51 @@ public class Pedido {
 	public void addProducto(Producto producto, int cantidad) {
 		for (LineaPedido linea : lineasPedido) {
 			if (linea.getProducto().getNombre().equals(producto.getNombre())) {
-				linea.setCantidad(linea.getCantidad() + cantidad);
-				return;
+				throw new IllegalArgumentException("El producto: '" + producto.getNombre() + "' ya está en el pedido ");
 			}
 		}
 		lineasPedido.add(new LineaPedido(producto, cantidad));
 	}
-	
-	
-	public void removeLinea(LineaPedido linea) {
-		lineasPedido.remove(linea);	
+
+	public void cancelar() {
+		if (this.estado == EstadoPedido.ENTREGADO) {
+			throw new IllegalArgumentException("No se puede cancelar un pedido ya entregado");
+		}
+		if (this.estado == EstadoPedido.CANCELADO) {
+			throw new IllegalArgumentException("El pedido ya está cancelado");
+		}
+		if (this.estado == EstadoPedido.EN_REPARTO && this.repartidor != null) {
+			this.repartidor.setEstado(EstadoRepartidor.DISPONIBLE);
+		}
+		this.estado = EstadoPedido.CANCELADO;
 	}
-	
+
+	public void removeLinea(LineaPedido linea) {
+		lineasPedido.remove(linea);
+	}
+
 	public int getId() {
 		return id;
-    }
-	
+	}
+
 	public LocalDateTime getFechaPedido() {
-        return fechaDePedido;
-    }
-	
-    public EstadoPedido getEstado() {
-        return estado;
-    }
-    
-    public Cliente getCliente() {
-        return cliente;
-    }
-    
-    public Repartidor getRepartidor() {
-        return repartidor;
-    }
-    
-    public List<LineaPedido> getLineasPedido() {
-        return lineasPedido;
-    }
+		return fechaDePedido;
+	}
+
+	public EstadoPedido getEstado() {
+		return estado;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public Repartidor getRepartidor() {
+		return repartidor;
+	}
+
+	public List<LineaPedido> getLineasPedido() {
+		return lineasPedido;
+	}
 
 }

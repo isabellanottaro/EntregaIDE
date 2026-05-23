@@ -4,5 +4,5 @@
 /**
  * 
  */
-module EentregaIDE_INS {
+module EntregaIDE_INS {
 }
