@@ -41,12 +41,29 @@ public class Pedido {
 		repartidor.setEstado(EstadoRepartidor.OCUPADO);
 		repartidor.addPedido(this);
 	}
-	
+
 	public void entregar() {
-		
+
 		if (this.estado != EstadoPedido.EN_REPARTO) {
-			
+			throw new IllegalStateException("no se puede entregar un pedido que no está en reparto");
+		}
+		this.estado = EstadoPedido.ENTREGADO;
+		if (this.repartidor != null) {
+			this.repartidor.setEstado(EstadoRepartidor.DISPONIBLE);
 		}
 	}
+
+	public void addProducto(Producto producto, int cantidad) {
+		for (LineaPedido linea : lineasPedido) {
+			if (linea.getProducto().getNombre().equals(producto.getNombre())) {
+				linea.setCantidad(linea.getCantidad() + cantidad);
+				return;
+			}
+		}
+		lineasPedido.add(new LineaPedido(producto, cantidad));
+	}
+	
+	
+	
 
 }
