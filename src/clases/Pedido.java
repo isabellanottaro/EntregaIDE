@@ -10,16 +10,43 @@ public class Pedido {
 	private Cliente cliente;
 	private Repartidor repartidor;
 	private List<LineaPedido> lineasPedido;
-	
-	public Pedido (int id, Cliente cliente) {
-		this.id=id;
-		this.cliente=cliente;
-		this.fechaDePedido=LocalDate.now();
-		this.estado=EstadoPedido.PENDIENTE;
-		this.lineasPedido=new ArrayList<>();
-		this.repartidor=null;
-		
+
+	public Pedido(int id, Cliente cliente) {
+		this.id = id;
+		this.cliente = cliente;
+		this.fechaDePedido = LocalDate.now();
+		this.estado = EstadoPedido.PENDIENTE;
+		this.lineasPedido = new ArrayList<>();
+		this.repartidor = null;
+	}
+
+	public double CalcularTotal() {
+		double total = 0.0;
+		for (LineaPedido linea : lineasPedido) {
+			total = total + linea.getSubtotal();
+		}
+		return total;
+	}
+
+	public void asignarRepartidor(Repartidor repartidor) {
+		if (lineasPedido.isEmpty()) {
+			throw new IllegalStateException("No se puede asignar un repartidor a un pedido sin productos");
+		}
+
+		if (!repartidor.isDisponible()) {
+			throw new IllegalStateException("El repartidor no está disponible");
+		}
+		this.repartidor = repartidor;
+		this.estado = EstadoPedido.EN_REPARTO;
+		repartidor.setEstado(EstadoRepartidor.OCUPADO);
+		repartidor.addPedido(this);
 	}
 	
-	
+	public void entregar() {
+		
+		if (this.estado != EstadoPedido.EN_REPARTO) {
+			
+		}
+	}
+
 }
