@@ -1,11 +1,12 @@
 package clases;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
 	private int id;
-	private LocalDate fechaDePedido;
+	private LocalDateTime fechaDePedido;
 	private EstadoPedido estado;
 	private Cliente cliente;
 	private Repartidor repartidor;
@@ -14,7 +15,7 @@ public class Pedido {
 	public Pedido(int id, Cliente cliente) {
 		this.id = id;
 		this.cliente = cliente;
-		this.fechaDePedido = LocalDate.now();
+		this.fechaDePedido = LocalDateTime.now();
 		this.estado = EstadoPedido.PENDIENTE;
 		this.lineasPedido = new ArrayList<>();
 		this.repartidor = null;
@@ -64,6 +65,32 @@ public class Pedido {
 	}
 	
 	
+	public void removeLinea(LineaPedido linea) {
+		lineasPedido.remove(linea);	
+	}
 	
+	public int getId() {
+		return id;
+    }
+	
+	public LocalDateTime getFechaPedido() {
+        return fechaDePedido;
+    }
+	
+    public EstadoPedido getEstado() {
+        return estado;
+    }
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+    
+    public Repartidor getRepartidor() {
+        return repartidor;
+    }
+    
+    public List<LineaPedido> getLineasPedido() {
+        return lineasPedido;
+    }
 
 }
