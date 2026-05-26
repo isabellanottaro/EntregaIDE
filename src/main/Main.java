@@ -58,7 +58,7 @@ public class Main {
             System.out.println("Correcto - " + e.getMessage());
         }
         
-        System.out.println("\n PRUEBA CANCELAR PEDIDO ===");
+        System.out.println("\n PRUEBA CANCELAR PEDIDO");
         Pedido pedido5 = new Pedido(5, cliente);
         pedido5.addProducto(pizza, 1);
         pedido5.asignarRepartidor(repartidor);
